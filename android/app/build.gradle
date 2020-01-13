@@ -83,7 +83,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-    implementation "com.folioreader:folioreader:0.5.4"
+    //implementation "com.folioreader:folioreader:0.5.4"
 
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.core:core-ktx:1.0.2'
@@ -96,7 +96,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.0.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.0.0'
-    //implementation project(':folioreader')
+    implementation project(':folioreader')
     //progressBar error solve
     configurations.matching { it.name == '_internal_aapt2_binary' }.all { config ->
         config.resolutionStrategy.eachDependency { details ->
