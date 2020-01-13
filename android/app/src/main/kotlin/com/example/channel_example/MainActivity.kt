@@ -22,16 +22,13 @@ class MainActivity : FlutterActivity() {
         GeneratedPluginRegistrant.registerWith(flutterEngine);
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL)
                 .setMethodCallHandler { call: MethodCall?, result: MethodChannel.Result? ->
-                    if (call!!.method.equals("getBatteryLevel")) {
-                        var value = call.argument<String>("text")
-                        val batteryLevel = getBatteryLevel();
-                        Toast.makeText(this,value, Toast.LENGTH_SHORT).show()
-                        openActivity();
-                        if (batteryLevel != -1) {
-                            result!!.success(batteryLevel)
-                        } else {
-                            result!!.error("UNAVAILABLE", "Battery level not available.", null);
-                        }
+                    if (call!!.method.equals("openEbookReader")) {
+                        var value = call.argument<String>("url")
+                        //val batteryLevel = getBatteryLevel();
+                        Toast.makeText(this, "Book Url: " + value, Toast.LENGTH_SHORT).show()
+                        openEbookReader()
+                        result!!.success("Flutter channel called")
+
                     } else {
                         result!!.notImplemented();
 
@@ -39,9 +36,9 @@ class MainActivity : FlutterActivity() {
                 }
     }
 
-    fun openActivity(){
+    fun openEbookReader() {
         //var intent = Intent(this, TestActivity::class.java)
-       // startActivity(intent)
+        // startActivity(intent)
 
         var folioReader = FolioReader.get()
         folioReader.openBook(R.raw.accessible_epub_3)
@@ -49,7 +46,7 @@ class MainActivity : FlutterActivity() {
     }
 
 
-    private fun getBatteryLevel(): Int {
+    /*private fun getBatteryLevel(): Int {
         var batteryLevel = -1
         batteryLevel = if (VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
             val batteryManager = getSystemService(Context.BATTERY_SERVICE) as BatteryManager
@@ -60,5 +57,5 @@ class MainActivity : FlutterActivity() {
                     intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1)
         }
         return batteryLevel
-    }
+    }*/
 }
