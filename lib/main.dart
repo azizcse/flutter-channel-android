@@ -32,19 +32,19 @@ class _MyHomePageState extends State<MyHomePage> {
   static const platform = const MethodChannel('samples.flutter.dev/battery');
 
   // Get battery level.
-  String _batteryLevel = 'Unknown battery level.';
+  String _ebookUrl = 'Unknown battery level.';
 
   Future<void> _getBatteryLevel() async {
     String batteryLevel;
     try {
-      final String result = await platform.invokeMethod('openEbookReader',{"url":_batteryLevel});
+      final String result = await platform.invokeMethod('openEbookReader',{"url":_ebookUrl});
       batteryLevel = result;
     } on PlatformException catch (e) {
       batteryLevel = e.message;
     }
 
     setState(() {
-      _batteryLevel = batteryLevel;
+      _ebookUrl = batteryLevel;
     });
   }
 
@@ -60,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Text('Open eReader'),
               onPressed: _getBatteryLevel,
             ),
-            Text(_batteryLevel),
+            Text(_ebookUrl),
           ],
         ),
       ),
