@@ -1,3 +1,4 @@
+/*
 import 'dart:io' as Io;
 import 'package:image/image.dart' as IM;
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
@@ -42,4 +43,4 @@ Future<Io.File> getImageFromNetwork(String url) async {
   var cacheManager = await DefaultCacheManager();
   Io.File file = await cacheManager.getSingleFile(url);
   return file;
-}
+}*/

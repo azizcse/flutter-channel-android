@@ -1,3 +1,4 @@
+import 'package:channel_example/stream/UsingStreamBuilder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -32,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
   static const platform = const MethodChannel('samples.flutter.dev/battery');
 
   // Get battery level.
-  String _ebookUrl = 'Unknown battery level.';
+  String _ebookUrl = 'Unknown';
 
   Future<void> _getBatteryLevel() async {
     String batteryLevel;
@@ -56,6 +57,13 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            /*RaisedButton(
+              child: Text("Streambuilder"),
+              onPressed: (){
+                Route route = MaterialPageRoute(builder: (context) => UsingStreamBuilder());
+                Navigator.push(context, route);
+              }
+            ),*/
             RaisedButton(
               child: Text('Open eReader'),
               onPressed: _getBatteryLevel,
