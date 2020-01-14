@@ -16,6 +16,7 @@
 package com.folioreader.ui.activity
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.ActivityManager
 import android.content.BroadcastReceiver
@@ -188,7 +189,7 @@ class FolioActivity : AppCompatActivity(), FolioActivityCallback, MediaControlle
         SD_CARD
     }
 
-    private enum class RequestCode private constructor(internal val value: Int) {
+    private enum class RequestCode constructor(internal val value: Int) {
         CONTENT_HIGHLIGHT(77),
         SEARCH(101)
     }
@@ -786,6 +787,7 @@ class FolioActivity : AppCompatActivity(), FolioActivityCallback, MediaControlle
         return false
     }
 
+    @SuppressLint("MissingSuperCall")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 
         if (requestCode == RequestCode.SEARCH.value) {
